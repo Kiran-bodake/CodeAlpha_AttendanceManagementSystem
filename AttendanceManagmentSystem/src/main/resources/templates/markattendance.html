@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mark Attendance</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Mark Attendance</h1>
+    <form action="/attendance/mark" method="POST">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>Status</th>
+            </tr>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.rollNo}"></td>
+                <td>
+                    <select name="status">
+                        <option value="Present">Present</option>
+                        <option value="Absent">Absent</option>
+                    </select>
+                    <input type="hidden" name="studentId" th:value="${student.id}">
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Mark Attendance</button>
+    </form>
+</body>
+</html>

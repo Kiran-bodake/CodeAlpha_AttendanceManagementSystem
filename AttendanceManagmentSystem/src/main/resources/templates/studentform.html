@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Add Student</h1>
+    <form action="/student/add" method="POST">
+        <label for="name">Student Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="rollNo">Roll Number:</label>
+        <input type="text" id="rollNo" name="rollNo" required><br><br>
+
+        <label for="branch">Select Branch:</label>
+        <select id="branch" name="branch.id" required>
+            <!-- Option elements will be populated dynamically or by server-side code -->
+            <!-- Example of static options -->
+            <option value="1">Computer Science</option>
+            <option value="2">Mechanical</option>
+            <option value="3">Civil</option>
+            <option value="4">Electrical</option>
+        </select><br><br>
+
+        <button type="submit">Add Student</button>
+    </form>
+</body>
+</html>

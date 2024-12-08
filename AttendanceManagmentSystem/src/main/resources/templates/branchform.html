@@ -1,0 +1,15 @@
+	<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Branch</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Add Branch</h1>
+    <form action="/branch/add" method="POST">
+        <label for="name">Branch Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <button type="submit">Add Branch</button>
+    </form>
+</body>
+</html>

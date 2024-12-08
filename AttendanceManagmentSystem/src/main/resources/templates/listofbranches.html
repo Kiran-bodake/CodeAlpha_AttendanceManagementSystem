@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Branch List</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Branch List</h1>
+
+    <!-- Table to display the branches -->
+    <table>
+        <thead>
+            <tr>
+                <th>Branch ID</th>
+                <th>Branch Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="branchTableBody">
+            <!-- Dynamic rows will be inserted here via JavaScript -->
+        </tbody>
+    </table>
+
+    <br><br>
+	<hr>
+    
+    <!-- Form to add new branch -->
+    <h2>Add New Branch</h2>
+    <form action="/branch/add" method="post">
+        <label>Branch ID</label>
+        <input type="text" name="branchId" placeholder="Enter Branch ID" required><br><br>
+        
+        <label>Branch Name</label>
+        <input type="text" name="branchName" placeholder="Enter Branch Name" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <br>
+    <!-- Link to go back to the homepage -->
+    <a href="/AttendanceManagementSystem">Back to Home</a>
+
+    <script>
+        // Example of how to dynamically populate the branch data
+        // Replace this with actual data fetched from the backend
+        const branches = [
+            { branchId: 1, branchName: "Computer Science" },
+            { branchId: 2, branchName: "Mechanical Engineering" },
+			{ branchId: 3, branchName: "Civil Engineering" },
+			{ branchId: 4, branchName: "Electrical Engineering" }
+        ];
+
+        function populateBranchTable() {
+            const tableBody = document.getElementById("branchTableBody");
+            branches.forEach(branch => {
+                const row = document.createElement("tr");
+
+                // Branch ID cell
+                const branchIdCell = document.createElement("td");
+                branchIdCell.textContent = branch.branchId;
+                row.appendChild(branchIdCell);
+
+                // Branch Name cell
+                const branchNameCell = document.createElement("td");
+                branchNameCell.textContent = branch.branchName;
+                row.appendChild(branchNameCell);
+
+                // Actions cell with a link to view students
+                const actionsCell = document.createElement("td");
+                const viewStudentsLink = document.createElement("a");
+                viewStudentsLink.href = `/branch/${branch.branchName}/students`;
+                viewStudentsLink.textContent = "View Students";
+                actionsCell.appendChild(viewStudentsLink);
+                row.appendChild(actionsCell);
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Call the function to populate the table when the page loads
+        window.onload = populateBranchTable;
+    </script>
+</body>
+</html>
